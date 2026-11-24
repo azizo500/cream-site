@@ -22,6 +22,16 @@ npm run build
 
 `npm run build` كيولّد نسخة Static جاهزة للاستضافة داخل `dist/`.
 
+## النشر على Netlify
+
+ربطي Netlify بالـ Repository `azizo500/cream-site` واختاري الخطة Free. إعدادات `netlify.toml` كتحدد تلقائياً:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node.js: `24`
+
+الـ Root directory هو جذر الـ Repository؛ ما تزيديش `skinluxe` حيث الملفات راه مرفوعة مباشرة فالجذر. من بعد الربط، التحديثات المدفوعة لفرع `main` كتقدر تتنشر أوتوماتيكياً. اسم رابط `*.netlify.app` كيتحدد عند إنشاء المشروع حسب توفر الاسم.
+
 ## فين نبدّل الكود؟
 
 - `src/pages/index.astro`: كيجمع الصفحة كاملة.
