@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+}
+const { name, size = 24 } = Astro.props;
+const paths: Record<string, string> = {
+  search: "M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0",
+  plus: "M12 5v14M5 12h14",
+  arrow: "M4 12h16m-6-6 6 6-6 6",
+  drop: "M12 2S4 10 4 15a8 8 0 0 0 16 0c0-5-8-13-8-13ZM8 15c0 3 2 4 4 4",
+  leaf: "M12 21v-9M12 16C3 17 2 11 2 6c7 0 11 2 10 10ZM12 12C11 4 17 2 22 2c0 7-3 11-10 10Z",
+  sun: "M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0",
+  sparkle:
+    "m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Zm8-1v4m-2-2h4",
+  instagram:
+    "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 10a5 5 0 1 1-10 0 5 5 0 0 1 10 0M17.5 6.5h.01",
+  youtube:
+    "M22 12s0-6-2-7c-3-1-13-1-16 0-2 1-2 7-2 7s0 6 2 7c3 1 13 1 16 0 2-1 2-7 2-7ZM10 8l6 4-6 4V8Z",
+  tiktok: "M14 3v13a5 5 0 1 1-5-5m5-8c1 4 3 6 7 6",
+  linkedin: "M3 3h18v18H3V3Zm5 10v7m0-10v.1m4 9.9v-7m0 3c0-4 5-4 5 0v4",
+  x: "m4 3 16 18M20 3 4 21M4 3h4l12 18h-4L4 3Z",
+};
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name] || paths.plus} />
+</svg>

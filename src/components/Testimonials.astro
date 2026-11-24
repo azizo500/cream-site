@@ -1,0 +1,92 @@
+---
+import Icon from "./Icon.astro";
+import SectionHeading from "./SectionHeading.astro";
+const testimonials = [
+  {
+    name: "إيما ويلسون",
+    role: "عميلة موثّقة",
+    image: "testimonial",
+    rating: "4.8/5.0",
+    quote:
+      "«أصبحت بشرتي ناعمة ومرطبة بشكل رائع. تحسّن ملمسها كثيرًا، وتبدو أكثر إشراقًا بصورة طبيعية كل صباح.»",
+  },
+  {
+    name: "أوليفيا كارتر",
+    role: "مهتمة بالجمال",
+    image: "testimonial-2",
+    rating: "4.9/5.0",
+    quote:
+      "«أحب جودة هذه المستحضرات كثيرًا. تبدو بشرتي أنعم وأكثر نضارة، وأشعر براحة أكبر بعد كل روتين.»",
+  },
+  {
+    name: "صوفيا ميلر",
+    role: "محبة للعناية بالبشرة",
+    image: "testimonial-3",
+    rating: "4.5/5.0",
+    quote:
+      "«غيّرت سكين لوكس روتين عنايتي تمامًا. كل المستحضرات فاخرة ولطيفة ومناسبة للاستخدام اليومي.»",
+  },
+];
+---
+
+<section id="testimonials" class="testimonials section">
+  <div class="container">
+    <SectionHeading
+      label="آراء العميلات"
+      title="تجارب حقيقية، نتائج مشرقة"
+      description="اكتشفي أساسيات العناية المناسبة لبشرتك، واستمتعي بروتين بسيط يمنح كل يوم لمسة مميزة."
+    />
+    <div
+      class="testimonial-carousel"
+      aria-roledescription="عارض شهادات العميلات"
+      data-reveal="zoom"
+    >
+      <div class="testimonial-slides" aria-live="polite">
+        {testimonials.map((item, i) => (
+          <article
+            class:list={["testimonial-slide", { "is-active": i === 0 }]}
+            aria-hidden={i !== 0}
+            inert={i !== 0}
+          >
+            <div class="testimonial-copy">
+              <div class="rating">
+                <span class="stars" aria-label="خمسة نجوم">
+                  ★★★★★
+                </span>
+                <span dir="ltr">{item.rating}</span>
+                <span>التقييم</span>
+              </div>
+              <blockquote>{item.quote}</blockquote>
+              <div class="testimonial-person">
+                <p>{item.name}</p>
+                <p class="muted">{item.role}</p>
+              </div>
+            </div>
+            <img
+              src={`/images/${item.image}.png`}
+              alt="عناية وترطيب البشرة"
+              width="640"
+              height="960"
+              loading="lazy"
+            />
+          </article>
+        ))}
+      </div>
+      <div class="carousel-controls" dir="ltr">
+        <button
+          class="icon-button previous"
+          aria-label="الشهادة السابقة"
+          disabled
+        >
+          <Icon name="arrow" size={20} />
+        </button>
+        <button class="icon-button next" aria-label="الشهادة التالية">
+          <Icon name="arrow" size={20} />
+        </button>
+      </div>
+      <div class="carousel-progress" aria-hidden="true">
+        <span></span>
+      </div>
+    </div>
+  </div>
+</section>

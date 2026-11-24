@@ -1,0 +1,69 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+const links = [
+  { label: "الرئيسية", href: "/" },
+  { label: "من نحن", href: "/#about" },
+  { label: "المتجر", href: "/#services" },
+  { label: "المجلة", href: "/#testimonials" },
+];
+---
+
+<a href="#main" class="skip-link">
+  انتقلي للمحتوى
+</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <nav class="desktop-nav" aria-label="القائمة الرئيسية">
+      {links.map((link) => (
+        <a class="rolling-link" href={link.href}>
+          <span>{link.label}</span>
+          <span aria-hidden="true">{link.label}</span>
+        </a>
+      ))}
+    </nav>
+    <Logo />
+    <div class="header-actions">
+      <button class="icon-button search-toggle" aria-label="البحث في الموقع">
+        <Icon name="search" size={21} />
+      </button>
+      <a class="button contact-button" href="/#contact">
+        <span>تواصلي معنا</span>
+        <span aria-hidden="true">تواصلي معنا</span>
+      </a>
+      <button
+        class="icon-button menu-toggle"
+        aria-label="فتح القائمة"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="plus" size={20} />
+      </button>
+    </div>
+  </div>
+  <nav
+    id="mobile-menu"
+    class="mobile-menu"
+    aria-label="القائمة على الهاتف"
+    inert
+  >
+    {links.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+    <a href="/#contact">تواصلي معنا</a>
+  </nav>
+</header>
+<dialog class="search-dialog" aria-labelledby="search-title">
+  <button class="icon-button dialog-close" aria-label="إغلاق البحث">
+    ×
+  </button>
+  <h2 id="search-title">عن ماذا تبحثين؟</h2>
+  <label for="site-search">ابحثي عن خدماتنا ونتائج العناية</label>
+  <input
+    id="site-search"
+    type="search"
+    placeholder="اكتبي للبحث…"
+    autocomplete="off"
+  />
+  <div class="search-results" aria-live="polite"></div>
+</dialog>

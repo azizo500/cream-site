@@ -1,0 +1,60 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section class="video-banner" aria-label="كريم العناية بالبشرة">
+  <video
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-label="كريم بنفسجي وسط تموجات الماء"
+  >
+    <source src="/video/cream.mp4" type="video/mp4" />
+  </video>
+  <button class="video-control" aria-label="تشغيل الفيديو">
+    تشغيل الفيديو
+  </button>
+</section>
+<section id="result" class="results section">
+  <div class="container container-narrow">
+    <SectionHeading
+      label="النتائج"
+      title="نتائج ملموسة وإشراقة واضحة"
+      description="اكتشفي نتائج تمنح بشرتك ملمسًا أنعم ونضارة متجددة وإشراقة طبيعية."
+    />
+    <div class="comparison" style="--position: 50%" data-reveal="zoom">
+      <img
+        src="/images/after.png"
+        class="comparison-after"
+        alt="البشرة بعد العناية"
+        width="1254"
+        height="1254"
+        loading="lazy"
+      />
+      <img
+        src="/images/before.png"
+        class="comparison-before"
+        alt="البشرة قبل العناية"
+        width="1254"
+        height="1254"
+        loading="lazy"
+      />
+      <span class="comparison-label label-before">قبل</span>
+      <span class="comparison-label label-after">بعد</span>
+      <div class="comparison-divider" aria-hidden="true">
+        <span>‹ ›</span>
+      </div>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        class="comparison-range"
+        aria-label="مقارنة البشرة قبل وبعد العناية"
+        aria-valuetext="50 بالمئة قبل العناية"
+        dir="ltr"
+      />
+    </div>
+  </div>
+</section>

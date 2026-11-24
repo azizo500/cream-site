@@ -1,0 +1,54 @@
+---
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Results from "../components/Results.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="اكتشفي سكين لوكس: عناية فاخرة بالبشرة، ترطيب عميق وتجديد وإشراقة طبيعية. بشرتك، بصمتك الجميلة."
+    />
+    <meta name="theme-color" content="#f3f3f3" />
+    <link
+      rel="preload"
+      href="/fonts/tajawal-arabic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/naskh-arabic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>سكين لوكس | عناية فاخرة بالبشرة</title>
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <Hero />
+      <About />
+      <Services />
+      <Results />
+      <Testimonials />
+    </main>
+    <Footer />
+    <script>
+      import "../scripts/interactions";
+    </script>
+  </body>
+</html>

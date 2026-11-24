@@ -1,0 +1,42 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+const stats = [
+  { value: 12, suffix: "+", label: "أساسيات العناية" },
+  { value: 82, suffix: "%", label: "رضا العملاء" },
+  { value: 2, suffix: "ألف+", label: "تقييمات رائعة" },
+  { value: 22, suffix: "+", label: "جوائز الجمال" },
+];
+---
+
+<section id="about" class="about section">
+  <div class="container">
+    <div class="about-visual">
+      <SectionHeading
+        label="من نحن"
+        title="هنا يزهر جمال بشرتك"
+        description="تجمع سكين لوكس مستحضرات عناية راقية لترطيب بشرتك وتجديدها وإبراز جمالك الطبيعي."
+        align="start"
+      />
+      <div class="about-portrait" data-reveal>
+        <img
+          src="/images/about.png"
+          width="1254"
+          height="1254"
+          alt="إشراقة البشرة الطبيعية"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <div class="stats" data-reveal-stagger>
+      {stats.map((stat) => (
+        <div class="stat">
+          <div class="stat-value">
+            <span data-count={stat.value}>{stat.value}</span>
+            <span>{stat.suffix}</span>
+          </div>
+          <p>{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

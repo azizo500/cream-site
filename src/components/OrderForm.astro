@@ -1,0 +1,155 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { product, formatPrice } from "../data/product";
+---
+
+<section
+  id="contact"
+  class="order-section section"
+  aria-labelledby="order-title"
+>
+  <div class="container">
+    <SectionHeading
+      label="طلب الشراء"
+      title="خطوة صغيرة لبشرة أكثر إشراقًا"
+      description="عمّري معلوماتك، وكمّلي طلبك معنا عبر WhatsApp."
+    />
+    <div class="order-layout" data-reveal>
+      <form id="purchase-form" class="purchase-form">
+        <h3 id="order-title">معلومات الطلب والتوصيل</h3>
+        <p class="order-intro">
+          الحقول المعلّمة بـ * ضرورية باش نقدروا نتواصلو معاك.
+        </p>
+        <div class="order-fields">
+          <div class="order-field">
+            <label for="order-name">الاسم الكامل *</label>
+            <input
+              id="order-name"
+              name="fullName"
+              type="text"
+              autocomplete="name"
+              required
+              maxlength="120"
+              placeholder="الاسم والنسب"
+            />
+          </div>
+          <div class="order-field">
+            <label for="order-phone">رقم الهاتف *</label>
+            <input
+              id="order-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+              minlength="8"
+              maxlength="25"
+              placeholder="06… أو +212…"
+              dir="ltr"
+            />
+          </div>
+          <div class="order-field">
+            <label for="order-city">المدينة *</label>
+            <input
+              id="order-city"
+              name="city"
+              type="text"
+              autocomplete="address-level2"
+              required
+              maxlength="100"
+              placeholder="المدينة ديالك"
+            />
+          </div>
+          <div class="order-field">
+            <label for="order-quantity">الكمية *</label>
+            <input
+              id="order-quantity"
+              name="quantity"
+              type="number"
+              min="1"
+              max="20"
+              value="1"
+              required
+              inputmode="numeric"
+            />
+          </div>
+          <div class="order-field order-field-wide">
+            <label for="order-address">عنوان التوصيل *</label>
+            <textarea
+              id="order-address"
+              name="address"
+              autocomplete="street-address"
+              required
+              rows="3"
+              maxlength="500"
+              placeholder="الحي، الزنقة، رقم الدار أو الشقة…"
+            ></textarea>
+          </div>
+          <div class="order-field order-field-wide">
+            <label for="order-notes">
+              ملاحظات إضافية <span class="muted">(اختياري)</span>
+            </label>
+            <textarea
+              id="order-notes"
+              name="notes"
+              rows="2"
+              maxlength="700"
+              placeholder="شي معلومة تعاوننا فالتوصيل"
+            ></textarea>
+          </div>
+        </div>
+        <p class="order-notice">
+          مصاريف التوصيل غادي نتأكدو منها معاك عبر WhatsApp قبل تأكيد الطلب. ما
+          كاين حتى أداء فهاد المرحلة.
+        </p>
+        <button type="submit" class="button order-submit">
+          <span>تابعي الطلب على WhatsApp</span>
+          <span aria-hidden="true">تابعي الطلب على WhatsApp</span>
+        </button>
+        <p class="order-privacy">
+          معلوماتك كتدخل فمسودة الرسالة فقط. الطلب كيوصلنا ملي كتضغطي «إرسال»
+          داخل WhatsApp.
+        </p>
+        <div class="order-feedback" hidden>
+          <p role="status"></p>
+          <a
+            class="text-link"
+            id="whatsapp-order-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            افتحي رسالة الطلب فـ WhatsApp
+          </a>
+        </div>
+      </form>
+      <aside class="order-product" aria-label="المنتج المختار">
+        <p class="eyebrow">اختيارك للعناية</p>
+        <img
+          src="/images/hero-cream.png"
+          width="1254"
+          height="1254"
+          alt="كريم إيفولف لتجديد بشرة الوجه"
+          loading="lazy"
+        />
+        <div>
+          <h3>{product.name}</h3>
+          <p class="muted">عناية فاخرة، ولمسة يومية من الترطيب.</p>
+          <p class="order-unit-price">
+            <strong>{formatPrice(product.unitPrice)}</strong>
+            <span class="muted">للوحدة</span>
+          </p>
+          <div class="order-product-quantity">
+            الكمية المختارة <span id="quantity-preview">1</span>
+          </div>
+          <div class="order-product-total" aria-live="polite">
+            <span>مجموع المنتجات</span>
+            <strong id="order-total">{formatPrice(product.unitPrice)}</strong>
+          </div>
+          <p class="order-delivery-note">
+            مصاريف التوصيل ما داخلاش فهاد المجموع.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import OrderForm from "./OrderForm.astro";
+const links = [
+  ["من نحن", "#about"],
+  ["خدماتنا", "#services"],
+  ["النتائج", "#result"],
+  ["المتجر", "#services"],
+  ["المجلة", "#testimonials"],
+  ["تواصلي معنا", "#contact"],
+];
+const socials = [
+  ["إنستغرام", "instagram", "https://www.instagram.com/"],
+  ["تيك توك", "tiktok", "https://www.tiktok.com/"],
+  ["يوتيوب", "youtube", "https://www.youtube.com/"],
+  ["لينكد إن", "linkedin", "https://www.linkedin.com/"],
+  ["تويتر", "x", "https://x.com/"],
+];
+---
+
+<section class="cta">
+  <div class="container cta-inner">
+    <div class="cta-copy" data-reveal="right">
+      <p class="eyebrow">ابدئي الآن</p>
+      <h2>بشرتك تستحق لمسة من الفخامة</h2>
+      <p class="description">
+        أساسيات عناية صُممت بعناية لتمنح بشرتك مظهرًا صحيًا وإشراقة يومية طبيعية.
+      </p>
+      <div class="cta-actions">
+        <a href="#contact" class="button">
+          <span>تسوقي الآن</span>
+          <span aria-hidden="true">تسوقي الآن</span>
+        </a>
+        <a href="#contact" class="text-link">
+          تواصلي معنا <Icon name="arrow" size={20} />
+        </a>
+      </div>
+    </div>
+    <img
+      src="/images/cream-in-hand.png"
+      alt="يد تحمل كريم إيفولف لتجديد البشرة"
+      width="1254"
+      height="1254"
+      loading="lazy"
+      data-reveal="left"
+    />
+  </div>
+</section>
+<OrderForm />
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top" data-reveal-stagger>
+      <div class="footer-brand">
+        <Logo />
+        <p>
+          ارتقي بروتينك اليومي مع مستحضرات فاخرة لتغذية بشرتك وترطيبها وإبراز
+          إشراقتها الطبيعية.
+        </p>
+        <form id="newsletter" class="newsletter">
+          <label class="sr-only" for="newsletter-email">
+            بريدك الإلكتروني
+          </label>
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder="بريدك الإلكتروني"
+            required
+            autocomplete="email"
+          />
+          <button class="button" type="submit">
+            <span>اشتركي</span>
+            <span aria-hidden="true">اشتركي</span>
+          </button>
+        </form>
+        <p class="newsletter-status" role="status"></p>
+      </div>
+      <div class="footer-column">
+        <h3>روابط سريعة</h3>
+        {links.map(([label, href]) => (
+          <a href={href}>{label}</a>
+        ))}
+      </div>
+      <div class="footer-column">
+        <h3>تابعينا</h3>
+        {socials.map(([label, icon, href]) => (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            <Icon name={icon} size={19} />
+            {label}
+          </a>
+        ))}
+      </div>
+      <div class="footer-column footer-contact">
+        <h3>
+          <a href="#contact">تواصلي معنا</a>
+        </h3>
+      </div>
+    </div>
+  </div>
+</footer>

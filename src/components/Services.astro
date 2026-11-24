@@ -1,0 +1,99 @@
+---
+import Icon from "./Icon.astro";
+import SectionHeading from "./SectionHeading.astro";
+const services = [
+  {
+    title: "ترطيب عميق",
+    icon: "drop",
+    image: "hydration",
+    description:
+      "امنحي بشرتك الجافة والمتعبة ترطيبًا مكثفًا لمظهر ناعم وممتلئ ومنتعش.",
+  },
+  {
+    title: "تجديد البشرة",
+    icon: "leaf",
+    image: "renewal",
+    description:
+      "جددي بشرتك بلطف وحسّني مظهر الملمس غير المتجانس والبشرة الباهتة.",
+  },
+  {
+    title: "عناية للإشراقة",
+    icon: "sun",
+    image: "radiance",
+    description:
+      "اكشفي عن بشرة أكثر إشراقًا وتجانسًا بعناية مخصصة لتعزيز إشراقتك الطبيعية.",
+  },
+  {
+    title: "تنقية الوجه",
+    icon: "sparkle",
+    image: "cleansing",
+    description:
+      "نظفي بشرتك وأنعشيها مع المساعدة على إزالة التراكمات والزيوت الزائدة والشوائب اليومية.",
+  },
+];
+---
+
+<section id="services" class="services section">
+  <div class="container">
+    <SectionHeading
+      label="خدماتنا"
+      title="عناية مصممة لبشرتك"
+      description="اكتشفي خدمات تجميل مخصصة لتغذية بشرتك وإبراز إشراقتها الطبيعية والصحية."
+    />
+    <div class="accordion" data-reveal-stagger>
+      {services.map((service, i) => (
+        <article class:list={["service", { "is-open": i === 0 }]}>
+          <h3>
+            <button
+              class="service-toggle"
+              aria-expanded={i === 0 ? "true" : "false"}
+              aria-controls={`service-panel-${i}`}
+              id={`service-toggle-${i}`}
+            >
+              <Icon name={service.icon} size={30} />
+              <span>{service.title}</span>
+              <span class="service-plus">
+                <Icon name="plus" size={20} />
+              </span>
+            </button>
+          </h3>
+          <div
+            class="service-panel"
+            id={`service-panel-${i}`}
+            role="region"
+            aria-labelledby={`service-toggle-${i}`}
+            inert={i !== 0}
+          >
+            <div class="service-panel-inner">
+              <div class="service-content">
+                <img
+                  src={`/images/${service.image}.png`}
+                  alt={service.title}
+                  width="640"
+                  height="852"
+                  loading="lazy"
+                />
+                <div class="service-description">
+                  <div class="service-meta">
+                    <span class="service-symbol">
+                      <Icon name={service.icon} />
+                    </span>
+                    <span class="service-number">0{i + 1}</span>
+                  </div>
+                  <div>
+                    <h2>{service.title}</h2>
+                    <p>{service.description}</p>
+                    <a href="#contact" class="button">
+                      <span>تسوقي الآن</span>
+                      <span aria-hidden="true">تسوقي الآن</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
